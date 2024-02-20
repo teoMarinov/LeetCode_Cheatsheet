@@ -30,7 +30,7 @@ const Header = () => {
       {session ? (
         <div className="flex justify-between">
           <Button variant="outline">Add new</Button>
-          <Input placeholder="Search" />
+          <Input className="w-4/6" placeholder="Search" />
 
           <DropdownMenu>
             <DropdownMenuTrigger>
