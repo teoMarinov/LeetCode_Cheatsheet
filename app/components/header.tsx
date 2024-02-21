@@ -32,7 +32,7 @@ const Header = ({ session }: HeaderProps) => {
         "
     >
       {session ? (
-        <div className="flex justify-between">
+        <div className="flex items-center justify-between">
           <Button variant="outline">Add new</Button>
           <Input className="w-4/6" placeholder="Search" />
 
