@@ -14,9 +14,11 @@ import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 import Link from "next/link";
 
-const Header = () => {
-  const [session, setSession] = useState(1);
+interface HeaderProps {
+  session: number;
+}
 
+const Header = ({ session }: HeaderProps) => {
   const [isChecked, setIsChecked] = useState(false);
   return (
     <div
@@ -24,7 +26,9 @@ const Header = () => {
             static
             top-0
             p-3
-            bg-gray-200
+            border-b
+          border-gray-300
+            shadow-md
         "
     >
       {session ? (
@@ -54,20 +58,32 @@ const Header = () => {
               </DropdownMenuItem>
 
               <DropdownMenuItem>
-                <Button onClick={() => setSession(0)}>Log out</Button>
+                <Button onClick={() => {}}>Log out</Button>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
       ) : (
-        <div className=" flex justify-between">
-          <h3>Welcome to LeetCode_Cheatsheet!</h3>
-          <p>
-            <Link href={"/login"} className=" underline ">
+        <div className=" flex justify-between px-3">
+          <h3 className=" font-semibold">
+            Welcome to LeetCode_
+            <span
+              className=" 
+          text-transparent 
+          bg-clip-text 
+          bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
+        from-violet-400 to-violet-700"
+            >
+              CheatSheet
+            </span>
+            !
+          </h3>
+          <p className=" font-medium">
+            <Link href={"/login"} className=" underline hover:text-sky-700 ">
               Login
             </Link>{" "}
             /
-            <Link href={"/register"} className=" underline ">
+            <Link href={"/register"} className=" underline hover:text-sky-700 ">
               {" "}
               Register
             </Link>
