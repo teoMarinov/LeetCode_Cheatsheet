@@ -20,6 +20,7 @@ import CardWrapper from "./card-wrapper";
 import { Button } from "@/components/ui/button";
 import { FormError } from "./form-error";
 import { FormSuccess } from "./form-success";
+import axios from "axios";
 
 export const RegisterForm = () => {
   const [error, setError] = useState<string | undefined>("");
@@ -38,6 +39,11 @@ export const RegisterForm = () => {
   const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
     setError("");
     setSuccess("");
+    axios.post("/api/register", values).then((response: any) => {
+      setError(response.data.error);
+      setSuccess(response.data.success);
+      console.log(response.data);
+    });
   };
 
   return (
