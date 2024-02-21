@@ -113,7 +113,7 @@ The result for the current indices idxS and idxP is stored in the cache before r
               <pre
                 className={clsx(
                   `overflow-hidden text-wrap pl-2`,
-                  isOpen && "h-[40px]"
+                  isOpen || "h-[40px]"
                 )}
               >
                 <code>{code}</code>
@@ -124,7 +124,7 @@ The result for the current indices idxS and idxP is stored in the cache before r
                 <p
                   className={clsx(
                     `overflow-hidden text-wrap`,
-                    isOpen && "h-[40px]"
+                    isOpen || "h-[40px]"
                   )}
                 >
                   {text}
@@ -136,7 +136,7 @@ The result for the current indices idxS and idxP is stored in the cache before r
               className="cursor-pointer "
             >
               <div className="flex flex-col items-center cursor-pointer">
-                {isOpen ? <SlArrowDown /> : <SlArrowUp />}
+                {isOpen ? <SlArrowUp /> : <SlArrowDown />}
               </div>
             </TableCell>
           </TableRow>
