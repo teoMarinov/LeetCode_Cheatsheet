@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
-import Link from "next/link";
 
 const Header = () => {
   const [isChecked, setIsChecked] = useState(false);

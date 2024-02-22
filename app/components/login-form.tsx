@@ -21,7 +21,6 @@ import { Button } from "@/components/ui/button";
 import { FormError } from "./form-error";
 import { FormSuccess } from "./form-success";
 import { login } from "@/actions/login";
-import axios from "axios";
 
 export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>("");
