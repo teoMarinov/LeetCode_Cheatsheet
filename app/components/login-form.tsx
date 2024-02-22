@@ -20,6 +20,8 @@ import CardWrapper from "./card-wrapper";
 import { Button } from "@/components/ui/button";
 import { FormError } from "./form-error";
 import { FormSuccess } from "./form-success";
+import { login } from "@/actions/login";
+import axios from "axios";
 
 export const LoginForm = () => {
   const [error, setError] = useState<string | undefined>("");
@@ -37,6 +39,12 @@ export const LoginForm = () => {
   const onSubmit = (values: z.infer<typeof LoginSchema>) => {
     setError("");
     setSuccess("");
+    startTransition(() => {
+      login(values).then((data : any) => {
+        setError(data.error);
+        setSuccess(data.success);
+      });
+    });
   };
 
   return (
