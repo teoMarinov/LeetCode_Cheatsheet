@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="bg-gray-50 h-full w-full overflow-auto scrollbar-thin scrollbar-thumb-stone-400 scrollbar-track-slate-200"
+      className="h-full w-full overflow-auto scrollbar-thin scrollbar-thumb-stone-400 scrollbar-track-slate-200"
     >
       <body className={inter.className}>{children}</body>
     </html>

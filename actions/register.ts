@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 
 import { db } from "@/lib/db";
 import { RegisterSchema } from "@/schemas";
-import { getUserByEmail } from "@/data/user";
+import { getUserByEmail } from "@/app/actions/getUserByEmail";
 
 export const register = async (values: z.infer<typeof RegisterSchema>) => {
   const validatedFields: any = RegisterSchema.safeParse(values);
@@ -24,7 +24,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     data: {
       name,
       email,
-      password: hashedPassword,
+      hashedPassword,
     },
   });
 

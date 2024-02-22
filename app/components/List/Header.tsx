@@ -13,7 +13,12 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { useState } from "react";
 
-const Header = () => {
+interface HeaderProps {
+  userInfo: any
+  logOut: () => {};
+}
+
+const Header = ({ userInfo, logOut }: HeaderProps) => {
   const [isChecked, setIsChecked] = useState(false);
   return (
     <div
@@ -38,9 +43,9 @@ const Header = () => {
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuLabel>{userInfo?.name}</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Your@emaail.com</DropdownMenuItem>
+            <DropdownMenuItem>{userInfo?.email}</DropdownMenuItem>
 
             <DropdownMenuItem>
               <Switch
@@ -51,8 +56,8 @@ const Header = () => {
               {isChecked ? "Dark" : "Light"}
             </DropdownMenuItem>
 
-            <DropdownMenuItem>
-              <Button onClick={() => {}}>Log out</Button>
+            <DropdownMenuItem className="flex justify-center">
+              <Button onClick={logOut}>Log out</Button>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

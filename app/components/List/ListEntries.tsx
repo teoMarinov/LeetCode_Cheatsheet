@@ -1,14 +1,14 @@
 "use client";
+
 import Header from "./Header";
-import { signOut, auth } from "@/auth";
-import { useState, useEffect } from "react";
+import { useSession, signOut } from "next-auth/react";
+import { getUserByEmail } from "@/app/actions/getUserByEmail";
 const ListEntries = () => {
-
-
+  const session = useSession();
   return (
-    <div>
-      <Header />
-      <p>ListEntries</p>
+    <div className="h-full">
+      <Header userInfo={session?.data?.user} logOut={() => signOut()} />
+      <p>{JSON.stringify(session)}</p>
     </div>
   );
 };

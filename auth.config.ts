@@ -15,6 +15,7 @@ export default {
           const { email, password } = validatedFields.data;
 
           const user = await getUserByEmail(email);
+          console.log(user)
 
           if (!user || !user.hashedPassword) return null;
 
