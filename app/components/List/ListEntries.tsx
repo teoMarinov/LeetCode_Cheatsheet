@@ -2,12 +2,12 @@
 
 import Header from "./Header";
 import { useSession, signOut } from "next-auth/react";
-import { getUserByEmail } from "@/app/actions/getUserByEmail";
 const ListEntries = () => {
   const session = useSession();
+  const logOut = () => signOut({ callbackUrl: '/' });
   return (
     <div className="h-full">
-      <Header userInfo={session?.data?.user} logOut={() => signOut()} />
+      <Header userInfo={session?.data?.user} logOut={logOut} />
       <p>{JSON.stringify(session)}</p>
     </div>
   );
