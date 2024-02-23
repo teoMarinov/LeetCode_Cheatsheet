@@ -1,9 +1,15 @@
 "use client";
 
-import ListEntries from "../components/List/ListEntries";
-
-const List = () => {
-  return <ListEntries />;
+import { useSession, signOut } from "next-auth/react";
+const ListEntries = () => {
+  const session = useSession();
+  const logOut = () => signOut({ callbackUrl: "/" });
+  return (
+    <div className="h-full">
+      {/* <Header userInfo={session?.data?.user} logOut={logOut} /> */}
+      <p>{JSON.stringify(session)}</p>
+    </div>
+  );
 };
 
-export default List;
+export default ListEntries;
