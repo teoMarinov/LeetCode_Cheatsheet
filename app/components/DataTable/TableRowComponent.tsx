@@ -1,8 +1,5 @@
 "use client";
-import {
-  TableCell,
-  TableRow,
-} from "@/components/ui/table";
+import { TableCell, TableRow } from "@/components/ui/table";
 import clsx from "clsx";
 import { useState } from "react";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
@@ -24,10 +21,11 @@ const TableRowComponent: React.FC<TableRowComponentProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <TableRow className=" divide-x divide-gray-400">
+    <TableRow className={clsx("divide-x divide-gray-400")}>
       <TableCell className="font-medium text-center">
         <a
           className="underline hover:text-sky-700"
+          onClick={(e) => e.stopPropagation()}
           href={link}
           target="_blank"
           rel="noopener noreferrer"
@@ -37,7 +35,7 @@ const TableRowComponent: React.FC<TableRowComponentProps> = ({
       </TableCell>
       <TableCell
         className={clsx(
-          "font-medium text-center",
+          "font-medium text-center text-black",
           difficulty === "Easy" && "bg-green-500",
           difficulty === "Medium" && "bg-yellow-400",
           difficulty === "Hard" && "bg-red-600"
@@ -48,26 +46,45 @@ const TableRowComponent: React.FC<TableRowComponentProps> = ({
       <TableCell className="text-center">
         <time>{date}</time>
       </TableCell>
-      <TableCell>
+      <TableCell
+        className={clsx(isOpen || "cursor-pointer")}
+        onClick={() => setIsOpen(true)}
+      >
         <pre
           className={clsx(
             `overflow-hidden font-medium text-wrap pl-2`,
-            isOpen || "h-[55px]"
+            isOpen || "line-clamp-2"
           )}
         >
           <code className="text-lg">{code}</code>
         </pre>
       </TableCell>
-      <TableCell className="">
+      <TableCell
+        className={clsx(isOpen || "cursor-pointer")}
+        onClick={() => setIsOpen(true)}
+      >
         <pre
-          className={clsx(`overflow-hidden text-wrap`, isOpen || "h-[55px]")}
+          className={clsx(
+            `overflow-hidden text-wrap`,
+            isOpen || "line-clamp-2"
+          )}
         >
           <p className="font-medium text-lg">{description}</p>
         </pre>
       </TableCell>
-      <TableCell onClick={() => setIsOpen(!isOpen)} className="cursor-pointer ">
-        <div className="flex flex-col items-center cursor-pointer">
-          {isOpen ? <SlArrowUp size={"md"} /> : <SlArrowDown size={"md"} />}
+      <TableCell
+        onClick={(e) => {
+          e.stopPropagation();
+          setIsOpen(!isOpen);
+        }}
+        className={clsx("cursor-pointer", isOpen && "bg-red-600/55")}
+      >
+        <div className={clsx("flex flex-col items-center cursor-pointer")}>
+          {isOpen ? (
+            <SlArrowUp color="white" size={"md"} />
+          ) : (
+            <SlArrowDown color="white" size={"md"} />
+          )}
         </div>
       </TableCell>
     </TableRow>

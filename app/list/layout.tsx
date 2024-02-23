@@ -20,7 +20,7 @@ export default async function RootLayout({
     <SessionProvider session={session}>
       <html
         lang="en"
-        className="h-full w-full overflow-auto scrollbar-thin scrollbar-thumb-stone-400 scrollbar-track-slate-200"
+        suppressHydrationWarning
       >
         <body className={inter.className}>{children}</body>
       </html>
