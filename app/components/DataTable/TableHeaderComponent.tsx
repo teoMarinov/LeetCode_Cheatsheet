@@ -19,7 +19,7 @@ const TableHeaderComponent: React.FC<TableHeaderComponentProps> = ({
   children,
 }) => {
   return (
-    <Table className="mb-14 border-x  border-b border-gray-200 shadow-md">
+    <Table className="mb-14 border-x dark:text-gray-400 border-b border-gray-200 shadow-md">
       <TableHeader>
         <TableRow className=" divide-x divide-gray-400">
           <TableHead className="w-[11%]">Name</TableHead>

@@ -11,15 +11,25 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Switch } from "@/components/ui/switch";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 
 interface HeaderProps {
-  userInfo: any
+  userInfo: any;
   logOut: () => {};
 }
 
 const Header = ({ userInfo, logOut }: HeaderProps) => {
   const [isChecked, setIsChecked] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  const { resolvedTheme, setTheme } = useTheme();
+
+  if (!mounted) return null;
+  const toggleTheme = () => {
+    setIsChecked(resolvedTheme === "dark" ? false : true);
+    setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
   return (
     <div
       className="
@@ -39,7 +49,7 @@ const Header = ({ userInfo, logOut }: HeaderProps) => {
           <DropdownMenuTrigger>
             <Avatar>
               <AvatarImage src="https://pbs.twimg.com/media/F_ZxnsxXsAAMbYe?format=jpg&name=360x360" />
-              <AvatarFallback>CN</AvatarFallback>
+              <AvatarFallback>LC</AvatarFallback>
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent>
@@ -51,9 +61,9 @@ const Header = ({ userInfo, logOut }: HeaderProps) => {
               <Switch
                 className="mr-3"
                 checked={isChecked}
-                onCheckedChange={setIsChecked}
+                onCheckedChange={toggleTheme}
               />{" "}
-              {isChecked ? "Dark" : "Light"}
+              {resolvedTheme === "dark" ? "Dark" : "Light"}
             </DropdownMenuItem>
 
             <DropdownMenuItem className="flex justify-center">
