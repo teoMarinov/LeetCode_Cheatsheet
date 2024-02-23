@@ -21,8 +21,6 @@ interface HeaderProps {
 }
 
 const AppHeader = ({ userInfo }: HeaderProps) => {
-
-  const [isChecked, setIsChecked] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   const { resolvedTheme, setTheme } = useTheme();
@@ -34,10 +32,9 @@ const AppHeader = ({ userInfo }: HeaderProps) => {
   const logOut = () => signOut({ callbackUrl: "/" });
 
   const toggleTheme = () => {
-    setIsChecked(resolvedTheme === "dark" ? false : true);
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
-  
+
   return (
     <div
       className="
@@ -46,6 +43,7 @@ const AppHeader = ({ userInfo }: HeaderProps) => {
             p-3
             border-b
           border-gray-300
+          dark:border-gray-600
             shadow-md
             w-full
         "
@@ -57,20 +55,18 @@ const AppHeader = ({ userInfo }: HeaderProps) => {
 
           <DropdownMenu>
             <DropdownMenuTrigger>
-              <Avatar>
-                <AvatarImage src="https://pbs.twimg.com/media/F_ZxnsxXsAAMbYe?format=jpg&name=360x360" />
-                <AvatarFallback>LC</AvatarFallback>
-              </Avatar>
+              <Button variant="outline">{userInfo?.name}</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuLabel>{userInfo?.name}</DropdownMenuLabel>
+              <DropdownMenuLabel>
+                {userInfo?.email}
+              </DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>{userInfo?.email}</DropdownMenuItem>
 
-              <DropdownMenuItem>
+              <DropdownMenuItem className="flex justify-center">
                 <Switch
                   className="mr-3"
-                  checked={isChecked}
+                  checked={resolvedTheme === "dark" ? true : false}
                   onCheckedChange={toggleTheme}
                 />{" "}
                 {resolvedTheme === "dark" ? "Dark" : "Light"}

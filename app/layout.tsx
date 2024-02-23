@@ -26,9 +26,13 @@ export default async function RootLayout({
         className="overflow-auto scrollbar-thin scrollbar-thumb-stone-400 scrollbar-track-slate-200"
         suppressHydrationWarning
       >
-        <AppHeader userInfo={session?.user} />
         <body className={inter.className}>
-          <ThemeProvider>{children}</ThemeProvider>
+          <ThemeProvider>
+            <header>
+              <AppHeader userInfo={session?.user} />
+            </header>
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </SessionProvider>
