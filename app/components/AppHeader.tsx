@@ -54,13 +54,11 @@ const AppHeader = ({ userInfo }: HeaderProps) => {
           <Input className="w-4/6" placeholder="Search" />
 
           <DropdownMenu>
-            <DropdownMenuTrigger>
+            <DropdownMenuTrigger asChild>
               <Button variant="outline">{userInfo?.name}</Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuLabel>
-                {userInfo?.email}
-              </DropdownMenuLabel>
+              <DropdownMenuLabel>{userInfo?.email}</DropdownMenuLabel>
               <DropdownMenuSeparator />
 
               <DropdownMenuItem className="flex justify-center">
