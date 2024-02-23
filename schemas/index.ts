@@ -20,3 +20,17 @@ export const RegisterSchema = z.object({
     message: "Name is required",
   }),
 });
+
+export const FormSchema = z.object({
+  name: z.string().min(1),
+  urlTo: z.string().url({
+    message: "Invalid URL",
+  }),
+  difficulty: z.enum(["Easy", "Medium", "Hard"]),
+  code: z.string().min(1, {
+    message: "Can't be empty",
+  }),
+  description: z.string().min(1, {
+    message: "Can't be empty",
+  }),
+});
