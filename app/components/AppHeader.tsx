@@ -15,13 +15,16 @@ import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 interface HeaderProps {
   userInfo?: any;
 }
 
 const AppHeader = ({ userInfo }: HeaderProps) => {
+
   const [mounted, setMounted] = useState(false);
+  const router = useRouter()
 
   const { resolvedTheme, setTheme } = useTheme();
 
@@ -50,7 +53,7 @@ const AppHeader = ({ userInfo }: HeaderProps) => {
     >
       {userInfo ? (
         <div className="flex items-center justify-between">
-          <Button variant="outline">Add new</Button>
+          <Button onClick={() => router.push('/new')} variant="outline">Add new</Button>
           <Input className="w-4/6" placeholder="Search" />
 
           <DropdownMenu>
