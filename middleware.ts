@@ -28,10 +28,14 @@ export default auth((req) => {
     return null;
   }
 
+  if (isLoggedIn && nextUrl.pathname === "/") {
+    return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
+  }
+
   if (!isLoggedIn && !isPublicRoute) {
     return Response.redirect(new URL("/login", nextUrl));
   }
-  return null
+  return null;
 });
 
 // Optionally, don't invoke Middleware on some paths

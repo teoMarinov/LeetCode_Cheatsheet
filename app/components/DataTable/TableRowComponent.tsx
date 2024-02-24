@@ -3,8 +3,7 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import clsx from "clsx";
 import { useState } from "react";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
-import {format} from 'date-fns'
-
+import { format } from "date-fns";
 
 interface TableRowComponentProps {
   name: string;
@@ -70,13 +69,13 @@ const TableRowComponent: React.FC<TableRowComponentProps> = ({
           e.stopPropagation();
           setIsOpen(!isOpen);
         }}
-        className={clsx("cursor-pointer", isOpen && "bg-red-600/55")}
+        className={clsx("cursor-pointer", isOpen && "bg-red-600 dark:bg-red-600/55")}
       >
         <div className={clsx("flex flex-col items-center cursor-pointer")}>
           {isOpen ? (
-            <SlArrowUp color="white" size={"md"} />
+            <SlArrowUp color="white" size={20} />
           ) : (
-            <SlArrowDown color="dark:white" size={"md"} />
+            <SlArrowDown color="dark:white" size={20} />
           )}
         </div>
       </TableCell>
