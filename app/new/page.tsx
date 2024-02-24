@@ -51,12 +51,12 @@ const NewEntry = () => {
 
   function onSubmit(values: z.infer<typeof FormSchema>) {
    router.push('list')
-    // axios
-    //   .post("/api/newentry", {
-    //     ...values,
-    //     userId: session?.user?.id,
-    //   })
-    //   .then((res) => console.log(res));
+    axios
+      .post("/api/newentry", {
+        ...values,
+        userId: session?.user?.id,
+      })
+      .then((res) => console.log(res));
   }
 
   const updateForm = (e: any) => {

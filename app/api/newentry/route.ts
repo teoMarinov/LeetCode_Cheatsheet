@@ -6,7 +6,6 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { name, urlTo, difficulty, code, description, userId } = body;
 
-    // return NextResponse.json('Hello from api')
     const newEntry = await db.entry.create({
       data: {
         name,

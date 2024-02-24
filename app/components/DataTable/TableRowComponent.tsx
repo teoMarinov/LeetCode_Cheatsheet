@@ -3,6 +3,9 @@ import { TableCell, TableRow } from "@/components/ui/table";
 import clsx from "clsx";
 import { useState } from "react";
 import { SlArrowDown, SlArrowUp } from "react-icons/sl";
+import {format} from 'date-fns'
+
+
 interface TableRowComponentProps {
   name: string;
   link: string;
@@ -44,32 +47,22 @@ const TableRowComponent: React.FC<TableRowComponentProps> = ({
         <div>{difficulty}</div>
       </TableCell>
       <TableCell className="text-center">
-        <time>{date}</time>
+        <time>{format(date, "MM/dd/yyyy")}</time>
       </TableCell>
       <TableCell
-        className={clsx(isOpen || "cursor-pointer")}
+        className={clsx("align-top", isOpen || "cursor-pointer")}
         onClick={() => setIsOpen(true)}
       >
-        <pre
-          className={clsx(
-            `overflow-hidden font-medium text-wrap pl-2`,
-            isOpen || "line-clamp-2"
-          )}
-        >
+        <pre className={clsx(`text-wrap pl-2`, isOpen || "line-clamp-2")}>
           <code className="text-lg">{code}</code>
         </pre>
       </TableCell>
       <TableCell
-        className={clsx(isOpen || "cursor-pointer")}
+        className={clsx("align-top", isOpen || "cursor-pointer")}
         onClick={() => setIsOpen(true)}
       >
-        <pre
-          className={clsx(
-            `overflow-hidden text-wrap`,
-            isOpen || "line-clamp-2"
-          )}
-        >
-          <p className="font-medium text-lg">{description}</p>
+        <pre className={clsx(isOpen || "line-clamp-2")}>
+          <p className="font-medium text-lg text-wrap">{description}</p>
         </pre>
       </TableCell>
       <TableCell
@@ -83,7 +76,7 @@ const TableRowComponent: React.FC<TableRowComponentProps> = ({
           {isOpen ? (
             <SlArrowUp color="white" size={"md"} />
           ) : (
-            <SlArrowDown color="white" size={"md"} />
+            <SlArrowDown color="dark:white" size={"md"} />
           )}
         </div>
       </TableCell>
