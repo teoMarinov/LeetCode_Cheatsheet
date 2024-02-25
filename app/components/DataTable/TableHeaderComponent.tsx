@@ -25,9 +25,9 @@ const TableHeaderComponent: React.FC<TableHeaderComponentProps> = ({
   sortBy,
 }) => {
   return (
-    <Table className="mb-14 border-x dark:text-gray-400 border-b border-gray-200 shadow-md">
+    <Table className="mb-14 border-x dark:text-gray-400 border-b dark:border-gray-700 border-gray-100 shadow-md">
       <TableHeader>
-        <TableRow className=" divide-x divide-gray-400 ">
+        <TableRow className=" divide-x dark:divide-gray-700 divide-gray-100 ">
           <TableHead
             onClick={() => sortBy("Name")}
             className="w-[10%] cursor-pointer select-none"
@@ -62,7 +62,9 @@ const TableHeaderComponent: React.FC<TableHeaderComponentProps> = ({
             <p className="flex h-full items-center justify-center">Code</p>
           </TableHead>
           <TableHead className="w-[35%]">
-            <p className="flex h-full items-center justify-center">Explanation</p>
+            <p className="flex h-full items-center justify-center">
+              Explanation
+            </p>
           </TableHead>
           <TableHead className="flex justify-center items-center ">
             <IoIosInformationCircleOutline size={20} />

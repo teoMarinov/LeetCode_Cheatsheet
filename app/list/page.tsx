@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import TableRowComponent from "../components/DataTable/TableRowComponent";
 
 const ListEntries = () => {
+  
   const [data, setData] = useState([]);
   const [orderBy, setOrderBy] = useState("Date");
   const [isAscending, setIsAscending] = useState(true);
@@ -20,18 +21,6 @@ const ListEntries = () => {
     if (orderBy === field) {
       setData(data.reverse());
       setIsAscending(!isAscending);
-      // if (isAscending) {
-      // } else {
-      //   switch (field) {
-      //     case "Name":
-      //       return sortByName();
-      //     case "Date":
-      //       return sortByDate();
-      //     case "Difficulty":
-      //       return sortByDifficulty();
-      //   }
-      //   setIsAscending(true);
-      // }
     } else {
       setOrderBy(field);
       setIsAscending(true);

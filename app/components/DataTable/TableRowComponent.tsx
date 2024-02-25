@@ -23,7 +23,7 @@ const TableRowComponent: React.FC<TableRowComponentProps> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <TableRow className={clsx("divide-x divide-gray-400")}>
+    <TableRow className={clsx("divide-x dark:divide-gray-700 divide-gray-100")}>
       <TableCell className="font-medium text-center">
         <a
           className="underline hover:text-sky-700"

@@ -21,10 +21,15 @@ interface HeaderProps {
   userInfo?: any;
 }
 
-const AppHeader = ({ userInfo }: HeaderProps) => {
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 
+const AppHeader = ({ userInfo }: HeaderProps) => {
   const [mounted, setMounted] = useState(false);
-  const router = useRouter()
+  const router = useRouter();
 
   const { resolvedTheme, setTheme } = useTheme();
 
@@ -53,31 +58,30 @@ const AppHeader = ({ userInfo }: HeaderProps) => {
     >
       {userInfo ? (
         <div className="flex items-center justify-between">
-          <Button onClick={() => router.push('/new')} variant="outline">Add new</Button>
+          <Button onClick={() => router.push("/new")} variant="outline">
+            Add new
+          </Button>
           <Input className="w-4/6" placeholder="Search" />
-
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
+          <Popover>
+            <PopoverTrigger>
+              {" "}
               <Button variant="outline">{userInfo?.name}</Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuLabel>{userInfo?.email}</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-
-              <DropdownMenuItem className="flex justify-center">
+            </PopoverTrigger>
+            <PopoverContent className=" text-center w-44">
+              <div className=" break-words">
+                {userInfo?.email} 
+              </div>
+              <span className="block my-5">
                 <Switch
                   className="mr-3"
                   checked={resolvedTheme === "dark" ? true : false}
                   onCheckedChange={toggleTheme}
                 />{" "}
                 {resolvedTheme === "dark" ? "Dark" : "Light"}
-              </DropdownMenuItem>
-
-              <DropdownMenuItem className="flex justify-center">
-                <Button onClick={logOut}>Log out</Button>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+              </span>
+              <Button onClick={logOut}>Log out</Button>
+            </PopoverContent>
+          </Popover>
         </div>
       ) : (
         <div className=" flex justify-between px-3">
