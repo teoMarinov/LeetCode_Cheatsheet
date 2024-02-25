@@ -1,17 +1,8 @@
 "use client";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Switch } from "@/components/ui/switch";
-import { useEffect, useState } from "react";
+import { useEffect, useState, KeyboardEvent } from "react";
 import { useTheme } from "next-themes";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
@@ -30,6 +21,7 @@ import {
 const AppHeader = ({ userInfo }: HeaderProps) => {
   const [mounted, setMounted] = useState(false);
   const router = useRouter();
+  const [search, setSearch] = useState("");
 
   const { resolvedTheme, setTheme } = useTheme();
 
@@ -41,6 +33,12 @@ const AppHeader = ({ userInfo }: HeaderProps) => {
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
+  };
+
+  const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === "Enter") {
+      router.push(`/list/${search}`);
+    }
   };
 
   return (
@@ -61,16 +59,18 @@ const AppHeader = ({ userInfo }: HeaderProps) => {
           <Button onClick={() => router.push("/new")} variant="outline">
             Add new
           </Button>
-          <Input className="w-4/6" placeholder="Search" />
+          <Input
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-4/6"
+            placeholder="Search"
+            onKeyDown={handleKeyDown}
+          />
           <Popover>
-            <PopoverTrigger>
-              {" "}
+            <PopoverTrigger asChild>
               <Button variant="outline">{userInfo?.name}</Button>
             </PopoverTrigger>
             <PopoverContent className=" text-center w-44">
-              <div className=" break-words">
-                {userInfo?.email} 
-              </div>
+              <div className=" break-words">{userInfo?.email}</div>
               <span className="block my-5">
                 <Switch
                   className="mr-3"
