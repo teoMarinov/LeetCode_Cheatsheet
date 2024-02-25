@@ -38,9 +38,9 @@ const TableRowComponent: React.FC<TableRowComponentProps> = ({
       <TableCell
         className={clsx(
           "font-medium text-center text-black",
-          difficulty === "Easy" && "bg-green-500",
-          difficulty === "Medium" && "bg-yellow-400",
-          difficulty === "Hard" && "bg-red-600"
+          difficulty === "Easy" && "text-green-500",
+          difficulty === "Medium" && "text-yellow-400",
+          difficulty === "Hard" && "text-red-600"
         )}
       >
         <div>{difficulty}</div>

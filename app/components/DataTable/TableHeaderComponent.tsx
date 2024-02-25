@@ -62,7 +62,7 @@ const TableHeaderComponent: React.FC<TableHeaderComponentProps> = ({
             <p className="flex h-full items-center justify-center">Code</p>
           </TableHead>
           <TableHead className="w-[35%]">
-            <p className="flex h-full items-center justify-center">Code</p>
+            <p className="flex h-full items-center justify-center">Explanation</p>
           </TableHead>
           <TableHead className="flex justify-center items-center ">
             <IoIosInformationCircleOutline size={20} />

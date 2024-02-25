@@ -32,6 +32,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import axios from "axios";
+import clsx from "clsx";
 
 const NewEntry = () => {
   const [position, setPosition] = useState<"Easy" | "Medium" | "Hard">("Easy");
@@ -50,7 +51,7 @@ const NewEntry = () => {
   });
 
   function onSubmit(values: z.infer<typeof FormSchema>) {
-   router.push('list')
+    router.push("list");
     axios
       .post("/api/newentry", {
         ...values,
@@ -107,7 +108,14 @@ const NewEntry = () => {
                   <DropdownMenuTrigger asChild>
                     <Button
                       variant="outline"
-                      className="w-full dark:text-gray-400"
+                      className={clsx(
+                        "w-full",
+                        position === "Easy" &&
+                          " hover:text-green-500 text-green-500",
+                        position === "Medium" &&
+                          "hover:text-yellow-400 text-yellow-400",
+                        position === "Hard" && "hover:text-red-600 text-red-600"
+                      )}
                     >
                       {position}
                     </Button>
@@ -119,13 +127,22 @@ const NewEntry = () => {
                       onValueChange={updateForm}
                       className="dark:text-gray-400"
                     >
-                      <DropdownMenuRadioItem value="Easy">
+                      <DropdownMenuRadioItem
+                        value="Easy"
+                        className="text-green-500"
+                      >
                         Easy
                       </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="Medium">
+                      <DropdownMenuRadioItem
+                        className=" text-yellow-400"
+                        value="Medium"
+                      >
                         Medium
                       </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem value="Hard">
+                      <DropdownMenuRadioItem
+                        className=" text-red-600"
+                        value="Hard"
+                      >
                         Hard
                       </DropdownMenuRadioItem>
                     </DropdownMenuRadioGroup>
@@ -171,7 +188,7 @@ const NewEntry = () => {
         />
 
         <div className="col-span-12 flex justify-center">
-          <Button className="w-[400px]" type="submit">
+          <Button variant={"outline"} className="w-[400px]" type="submit">
             Submit
           </Button>
         </div>
