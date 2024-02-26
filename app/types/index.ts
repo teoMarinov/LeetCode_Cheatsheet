@@ -4,7 +4,7 @@ export type EntryType = {
     name: string;
     urlTo: string;
     difficulty: string;
-    createdAt: string;
+    createdAt: string | Date
     code: string;
     description: string;
 }

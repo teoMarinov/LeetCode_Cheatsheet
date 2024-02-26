@@ -1,8 +1,8 @@
 import { db } from "@/lib/db";
 import { auth } from "@/auth";
-import { NextResponse } from "next/server";
+import { EntryType } from "@/app/types";
 
-export async function GET() {
+async function getData(): Promise<any> {
   try {
     const session = await auth();
     const userId = session?.user?.id;
@@ -12,9 +12,10 @@ export async function GET() {
         userId,
       },
     });
-    return NextResponse.json(data);
-  } catch (err: any) {
-    console.log(err, "Error newEntry");
-    return new Response("Catch Error newEntry");
+    
+    return data;
+  } catch (err) {
+    console.log("🚀🚀🚀🚀", err, "🚀🚀🚀🚀🚀Error newEntry");
   }
 }
+export default getData;

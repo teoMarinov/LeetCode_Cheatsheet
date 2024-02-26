@@ -1,19 +1,13 @@
-"use client";
+import { columns } from "./columns";
+import { DataTable } from "@/components/data-table";
+import getData from "@/actions/getData";
 
-import axios from "axios";
-import { useState, useEffect } from "react";
-import DesktopDataTable from "./components/DesktopDataTable";
+export default async function Page() {
+  const data = await getData();
 
-const ListEntries = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    axios.get("/api/getentries").then((response) => {
-      setData(response.data);
-    });
-  }, []);
-
-  return <DesktopDataTable dataProp={data} />;
-};
-
-export default ListEntries;
+  return (
+    <div className="container mx-auto py-10">
+      <DataTable columns={columns} data={data} />
+    </div>
+  );
+}
