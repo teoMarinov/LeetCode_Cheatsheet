@@ -85,19 +85,20 @@ const AppHeader = ({ userInfo }: HeaderProps) => {
         </div>
       ) : (
         <div className=" flex justify-between px-3">
-          <h3 className=" font-semibold">
+          <Link href={"/"} className=" font-semibold">
             Welcome to LeetCode_
             <span
               className=" 
           text-transparent 
           bg-clip-text 
           bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))]
-        from-violet-400 to-violet-700"
+        from-violet-400 to-violet-700
+         "
             >
               CheatSheet
             </span>
             !
-          </h3>
+          </Link>
           <p className=" font-medium">
             <Link href={"/login"} className=" underline hover:text-sky-700 ">
               Login
