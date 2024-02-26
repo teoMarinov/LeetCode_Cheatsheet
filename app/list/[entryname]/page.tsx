@@ -1,7 +1,7 @@
 "use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import DataDisplay from "../components/DataDisplay";
+import DataDisplay from "../components/DesktopDataTable";
 
 interface SearchListProps {
   params: {

@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import { useState, useEffect } from "react";
-import DataDisplay from "./components/DataDisplay";
+import DesktopDataTable from "./components/DesktopDataTable";
 
 const ListEntries = () => {
   const [data, setData] = useState([]);
@@ -13,7 +13,7 @@ const ListEntries = () => {
     });
   }, []);
 
-  return <DataDisplay dataProp={data} />;
+  return <DesktopDataTable dataProp={data} />;
 };
 
 export default ListEntries;

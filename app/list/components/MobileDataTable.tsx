@@ -5,12 +5,11 @@ import TableRowComponent from "@/app/components/DataTable/TableRowComponent";
 import { EntryType } from "@/app/types";
 import { useEffect, useState } from "react";
 
-interface DataDisplayProps {
+interface MobileDataTableProps {
   dataProp: EntryType[];
 }
-const DataDisplay: React.FC<DataDisplayProps> = ({ dataProp }) => {
+const MobileDataTable: React.FC<MobileDataTableProps> = ({ dataProp }) => {
   const [data, setData] = useState<EntryType[]>([]);
-  console.log("🚀 ~ data:", data);
   const [orderBy, setOrderBy] = useState("Date");
   const [isAscending, setIsAscending] = useState(true);
 
@@ -61,28 +60,7 @@ const DataDisplay: React.FC<DataDisplayProps> = ({ dataProp }) => {
     });
     setData(sortedArr);
   };
-
-  return (
-    <div className="mt-3 border-t">
-      <TableHeaderComponent
-        orderBy={orderBy}
-        ascending={isAscending}
-        sortBy={sortBy}
-      >
-        {data.map((entry: EntryType) => (
-          <TableRowComponent
-            key={entry.id}
-            name={entry.name}
-            link={entry.urlTo}
-            difficulty={entry.difficulty}
-            date={entry.createdAt}
-            code={entry.code}
-            description={entry.description}
-          />
-        ))}
-      </TableHeaderComponent>
-    </div>
-  );
+  return <div>MobileDataTable</div>;
 };
 
-export default DataDisplay;
+export default MobileDataTable;
