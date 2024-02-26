@@ -62,7 +62,7 @@ const DesktopDataTable: React.FC<DesktopDataTableProps> = ({ dataProp }) => {
   };
 
   return (
-    <div className="mt-3 border-t  hidden xl:block">
+    <div className="mt-3 border-t hidden xl:block">
       <TableHeaderComponent
         orderBy={orderBy}
         ascending={isAscending}

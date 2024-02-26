@@ -52,6 +52,8 @@ const AppHeader = ({ userInfo }: HeaderProps) => {
           dark:border-gray-600
             shadow-md
             w-full
+            hidden 
+            xl:block
         "
     >
       {userInfo ? (

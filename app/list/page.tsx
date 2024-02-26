@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import DesktopDataTable from "./components/DesktopDataTable";
+import MobileDataTable from "./components/MobileDataTable";
 
 const ListEntries = () => {
   const [data, setData] = useState([]);
@@ -13,7 +14,12 @@ const ListEntries = () => {
     });
   }, []);
 
-  return <DesktopDataTable dataProp={data} />;
+  return (
+    <>
+      <DesktopDataTable dataProp={data} />
+      <MobileDataTable dataProp={data} />
+    </>
+  );
 };
 
 export default ListEntries;
