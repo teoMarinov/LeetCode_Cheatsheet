@@ -96,13 +96,13 @@ const MobileDataTable: React.FC<MobileDataTableProps> = ({ dataProp }) => {
                   <CiLink />
                 </a>
               </div>
-              <div className="md:text-2xl pr-6 pl-5 text-gray-300">
+              <div className="md:text-2xl pr-6 pl-5 text-neutral-600 dark:text-gray-300">
                 {format(entry.createdAt, "MM/dd/yyyy")}
               </div>
             </AccordionTrigger>
             <AccordionContent className="pl-5 md:text-3xl mb-5">
               <div>
-                <header className="md:pt-7 pt-3 pb-5 md:pb-10 text-gray-200 pl-1 font-semibold text-xl md:text-4xl">
+                <header className="md:pt-7 pt-3 pb-5 md:pb-10 text-neutral-600 dark:text-gray-200 pl-1 font-semibold text-xl md:text-4xl">
                   Code
                 </header>
                 <pre>
@@ -110,7 +110,7 @@ const MobileDataTable: React.FC<MobileDataTableProps> = ({ dataProp }) => {
                 </pre>
               </div>
               <div>
-                <header className="md:pt-12 pt-7 pb-4 md:pb-6 text-gray-200 pl-1 font-semibold text-xl md:text-4xl">
+                <header className="md:pt-12 pt-7 pb-4 md:pb-6 text-neutral-600 dark:text-gray-200 pl-1 font-semibold text-xl md:text-4xl">
                   Description
                 </header>
                 <pre>

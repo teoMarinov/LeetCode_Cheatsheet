@@ -1,7 +1,8 @@
 "use client";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import DataDisplay from "../components/DesktopDataTable";
+import DesktopDataTable from "../components/DesktopDataTable";
+import MobileDataTable from "../components/MobileDataTable";
 
 interface SearchListProps {
   params: {
@@ -17,7 +18,12 @@ const SearchList: React.FC<SearchListProps> = ({ params }) => {
       .then((response) => setData(response.data));
   }, [params.entryname]);
 
-  return <DataDisplay dataProp={data} />;
+  return (
+    <>
+      <DesktopDataTable dataProp={data} />
+      <MobileDataTable dataProp={data} />
+    </>
+  );
 };
 
 export default SearchList;
