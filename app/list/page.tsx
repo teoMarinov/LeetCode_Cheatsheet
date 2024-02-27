@@ -76,7 +76,7 @@ const ListEntries = () => {
                 name={'entry.name'}
                 link={'entry.urlTo'}
                 difficulty={'Hard'}
-                date={'entry.createdAt'}
+                date={new Date().toString()}
                 code={'entry.code'}
                 description={'entry.description'}
               />
