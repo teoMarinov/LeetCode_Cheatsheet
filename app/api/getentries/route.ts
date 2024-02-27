@@ -15,6 +15,6 @@ export async function GET() {
     return NextResponse.json(data);
   } catch (err: any) {
     console.log(err, "Error newEntry");
-    return new Response("Catch Error newEntry");
+    throw new NextResponse("Catch Error newEntry", err );
   }
 }

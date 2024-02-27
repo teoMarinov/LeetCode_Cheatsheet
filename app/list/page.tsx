@@ -83,14 +83,6 @@ const ListEntries = () => {
                 ascending={isAscending}
                 sortBy={sortBy}
               >
-                {/* <TableRowComponent
-                name={'entry.name'}
-                link={'entry.urlTo'}
-                difficulty={'Hard'}
-                date={new Date().toString()}
-                code={'entry.code'}
-                description={'entry.description'}
-              /> */}
                 {data.map((entry: EntryType) => (
                   <TableRowComponent
                     key={entry.id}
@@ -108,14 +100,6 @@ const ListEntries = () => {
           {/* Mobile data table */}
           <>
             <div className=" xl:hidden ">
-              {/* <MobileDataTableRow
-                name={'entry.name'}
-                link={'entry.urlTo'}
-                difficulty={'Hard'}
-                date={new Date().toString()}
-                code={'entry.code'}
-                description={'entry.description'}
-            /> */}
               {data.map((entry: EntryType) => (
                 <MobileDataTableRow
                   key={entry.id}
