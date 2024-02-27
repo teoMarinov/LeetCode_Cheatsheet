@@ -66,7 +66,7 @@ const NewEntry = () => {
   };
 
   return (
-    <div className="px-2">
+    <div className="flex flex-col justify-center xl:px-2">
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
@@ -159,7 +159,8 @@ const NewEntry = () => {
             control={form.control}
             name="code"
             render={({ field }) => (
-              <FormItem className=" col-span-6">
+              <FormItem className="col-span-12 xl:col-span-6">
+                <FormLabel className="mx-[45%]">Code</FormLabel>
                 <FormControl>
                   <Textarea
                     className="h-[600px] text-wrap whitespace-normal flex-none"
@@ -175,7 +176,8 @@ const NewEntry = () => {
             control={form.control}
             name="description"
             render={({ field }) => (
-              <FormItem className=" col-span-6">
+              <FormItem className="col-span-12 xl:col-span-6">
+                <FormLabel className="mx-[45%]">Description</FormLabel>
                 <FormControl>
                   <Textarea
                     className="w-full h-[600px] text-wrap whitespace-normal flex-none"
@@ -183,7 +185,6 @@ const NewEntry = () => {
                     {...field}
                   />
                 </FormControl>
-
                 <FormMessage />
               </FormItem>
             )}
