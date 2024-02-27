@@ -4,11 +4,13 @@ import TableHeaderComponent from "@/app/components/DataTable/TableHeaderComponen
 import TableRowComponent from "@/app/components/DataTable/TableRowComponent";
 
 import dummyData from "@/app/common/landingPageDummyData";
+import LandingPageHeader from "./components/LandingPageHeader";
 
 export default function Home() {
   const test = ["Easy", "Medium", "Hard"];
   return (
     <div className="flex flex-col items-center">
+      <LandingPageHeader />
       <div className="pt-60 flex flex-col gap-y-10 w-[98%]">
         <h1 className="text-7xl text-center font-bold">
           LeetCode_
@@ -37,7 +39,6 @@ export default function Home() {
           to write down the solutions for all LeetCode problems you{"'"}ve
           solved!
         </h3>
-
         <TableHeaderComponent>
           {test.map((item) => (
             <TableRowComponent
@@ -51,6 +52,7 @@ export default function Home() {
             />
           ))}
         </TableHeaderComponent>
+        L
       </div>
     </div>
   );

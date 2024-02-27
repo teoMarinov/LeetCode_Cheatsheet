@@ -20,8 +20,8 @@ import {
 
 const AppHeader = ({ userInfo }: HeaderProps) => {
   const [mounted, setMounted] = useState(false);
-  const router = useRouter();
   const [search, setSearch] = useState("");
+  const router = useRouter();
 
   const { resolvedTheme, setTheme } = useTheme();
 
