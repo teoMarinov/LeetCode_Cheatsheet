@@ -66,134 +66,137 @@ const NewEntry = () => {
   };
 
   return (
-    <Form {...form}>
-      <form
-        onSubmit={form.handleSubmit(onSubmit)}
-        className="grid grid-cols-12 gap-y-4 gap-x-2"
-      >
-        <FormField
-          control={form.control}
-          name="name"
-          render={({ field }) => (
-            <FormItem className="mt-4 col-span-4">
-              <FormLabel className="mx-[45%]">Name</FormLabel>
-              <FormControl>
-                <Input placeholder="Name" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="urlTo"
-          render={({ field }) => (
-            <FormItem className="mt-4 col-span-4">
-              <FormLabel className="mx-[45%]">Link</FormLabel>
-              <FormControl>
-                <Input placeholder="Link" {...field} />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="urlTo"
-          render={() => (
-            <FormItem className="mt-4 col-span-4">
-              <FormLabel className="mx-[45%]">Difficulty</FormLabel>
-              <FormControl>
-                <DropdownMenu>
-                  <DropdownMenuTrigger asChild>
-                    <Button
-                      variant="outline"
-                      className={clsx(
-                        "w-full",
-                        position === "Easy" &&
-                          " hover:text-green-500 text-green-500",
-                        position === "Medium" &&
-                          "hover:text-yellow-400 text-yellow-400",
-                        position === "Hard" && "hover:text-red-600 text-red-600"
-                      )}
-                    >
-                      {position}
-                    </Button>
-                  </DropdownMenuTrigger>
-                  <DropdownMenuContent className="w-20">
-                    <DropdownMenuSeparator />
-                    <DropdownMenuRadioGroup
-                      value={position}
-                      onValueChange={updateForm}
-                      className="dark:text-gray-400"
-                    >
-                      <DropdownMenuRadioItem
-                        value="Easy"
-                        className="text-green-500"
+    <div className="px-2">
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="grid grid-cols-12 gap-y-4 gap-x-2"
+        >
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem className="mt-4 col-span-4">
+                <FormLabel className="mx-[45%]">Name</FormLabel>
+                <FormControl>
+                  <Input placeholder="Name" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="urlTo"
+            render={({ field }) => (
+              <FormItem className="mt-4 col-span-4">
+                <FormLabel className="mx-[45%]">Link</FormLabel>
+                <FormControl>
+                  <Input placeholder="Link" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="urlTo"
+            render={() => (
+              <FormItem className="mt-4 col-span-4">
+                <FormLabel className="mx-[45%]">Difficulty</FormLabel>
+                <FormControl>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="outline"
+                        className={clsx(
+                          "w-full",
+                          position === "Easy" &&
+                            " hover:text-green-500 text-green-500",
+                          position === "Medium" &&
+                            "hover:text-yellow-400 text-yellow-400",
+                          position === "Hard" &&
+                            "hover:text-red-600 text-red-600"
+                        )}
                       >
-                        Easy
-                      </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem
-                        className=" text-yellow-400"
-                        value="Medium"
+                        {position}
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent className="w-20">
+                      <DropdownMenuSeparator />
+                      <DropdownMenuRadioGroup
+                        value={position}
+                        onValueChange={updateForm}
+                        className="dark:text-gray-400"
                       >
-                        Medium
-                      </DropdownMenuRadioItem>
-                      <DropdownMenuRadioItem
-                        className=" text-red-600"
-                        value="Hard"
-                      >
-                        Hard
-                      </DropdownMenuRadioItem>
-                    </DropdownMenuRadioGroup>
-                  </DropdownMenuContent>
-                </DropdownMenu>
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="code"
-          render={({ field }) => (
-            <FormItem className=" col-span-6">
-              <FormControl>
-                <Textarea
-                  className="h-[600px] text-wrap whitespace-normal flex-none"
-                  placeholder="Enter your solution's code..."
-                  {...field}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem className=" col-span-6">
-              <FormControl>
-                <Textarea
-                  className="w-full h-[600px] text-wrap whitespace-normal flex-none"
-                  placeholder="Give a description of the solution's logic..."
-                  {...field}
-                />
-              </FormControl>
+                        <DropdownMenuRadioItem
+                          value="Easy"
+                          className="text-green-500"
+                        >
+                          Easy
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem
+                          className=" text-yellow-400"
+                          value="Medium"
+                        >
+                          Medium
+                        </DropdownMenuRadioItem>
+                        <DropdownMenuRadioItem
+                          className=" text-red-600"
+                          value="Hard"
+                        >
+                          Hard
+                        </DropdownMenuRadioItem>
+                      </DropdownMenuRadioGroup>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="code"
+            render={({ field }) => (
+              <FormItem className=" col-span-6">
+                <FormControl>
+                  <Textarea
+                    className="h-[600px] text-wrap whitespace-normal flex-none"
+                    placeholder="Enter your solution's code..."
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+              <FormItem className=" col-span-6">
+                <FormControl>
+                  <Textarea
+                    className="w-full h-[600px] text-wrap whitespace-normal flex-none"
+                    placeholder="Give a description of the solution's logic..."
+                    {...field}
+                  />
+                </FormControl>
 
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-        <div className="col-span-12 flex justify-center">
-          <Button variant={"outline"} className="w-[400px]" type="submit">
-            Submit
-          </Button>
-        </div>
-      </form>
-    </Form>
+          <div className="col-span-12 flex justify-center">
+            <Button variant={"outline"} className="w-[400px]" type="submit">
+              Submit
+            </Button>
+          </div>
+        </form>
+      </Form>
+    </div>
   );
 };
 
