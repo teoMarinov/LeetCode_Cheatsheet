@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { useEffect, useState, KeyboardEvent } from "react";
 import { useTheme } from "next-themes";
-import Link from "next/link";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
@@ -16,12 +15,16 @@ import {
 } from "@/components/ui/popover";
 
 const DesktopListHeader = () => {
-  const session = useSession().data?.user;
-
-  const [search, setSearch] = useState("");
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
+  const session = useSession().data?.user;
+  const [search, setSearch] = useState("");
 
   const { resolvedTheme, setTheme } = useTheme();
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
 
   const logOut = () => signOut({ callbackUrl: "/" });
 
@@ -34,7 +37,6 @@ const DesktopListHeader = () => {
       router.push(`/list/${search}`);
     }
   };
-
   return (
     <div
       className="

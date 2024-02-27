@@ -1,37 +1,27 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { useTheme } from "next-themes";
 import { Input } from "@/components/ui/input";
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-
-import { RxHamburgerMenu } from "react-icons/rx";
-import { FiSun, FiMoon } from "react-icons/fi";
 
 import { useSession } from "next-auth/react";
 
 import { signOut } from "next-auth/react";
 
-import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
-import { useState, KeyboardEvent } from "react";
+import { useEffect, useState, KeyboardEvent  } from "react";
 import UserSheet from "@/components/user-sheeet";
 
 const MobileListHeader = () => {
-  const session = useSession().data?.user;
-
-  const [search, setSearch] = useState("");
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
+  const session = useSession().data?.user;
+  const [search, setSearch] = useState("");
 
   const { resolvedTheme, setTheme } = useTheme();
+
+  useEffect(() => setMounted(true), []);
+
+  if (!mounted) return null;
 
   const logOut = () => signOut({ callbackUrl: "/" });
 
@@ -44,7 +34,6 @@ const MobileListHeader = () => {
       router.push(`/list/${search}`);
     }
   };
-
   return (
     <div
       className="

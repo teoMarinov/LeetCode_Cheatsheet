@@ -15,7 +15,6 @@ import UserSheet from "@/components/user-sheeet";
 const NewHeader = () => {
   const session = useSession().data?.user;
 
-  const [search, setSearch] = useState("");
   const router = useRouter();
 
   const { resolvedTheme, setTheme } = useTheme();
