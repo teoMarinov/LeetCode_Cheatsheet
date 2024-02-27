@@ -11,6 +11,7 @@ const ListEntries = () => {
   const [data, setData] = useState<EntryType[]>([]);
   const [orderBy, setOrderBy] = useState("Date");
   const [isAscending, setIsAscending] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
   const sortBy = (field: string) => {
     if (orderBy === field) {
@@ -57,59 +58,79 @@ const ListEntries = () => {
   };
 
   useEffect(() => {
-    axios.get("/api/getentries").then((response) => {
-      setData(response.data);
-    });
+    axios
+      .get("/api/getentries")
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error: any) => {
+        console.log(error);
+      })
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
     <>
-      {/* Desktop data table */}
-      <>
-        <div className="mt-3 border-t hidden xl:block">
-          <TableHeaderComponent
-            orderBy={orderBy}
-            ascending={isAscending}
-            sortBy={sortBy}
-          >
-             <TableRowComponent
+      {isLoading ? (
+        <>Loading</>
+      ) : (
+        <>
+          {/* Desktop data table */}
+          <>
+            <div className="mt-3 border-t hidden xl:block">
+              <TableHeaderComponent
+                orderBy={orderBy}
+                ascending={isAscending}
+                sortBy={sortBy}
+              >
+                {/* <TableRowComponent
                 name={'entry.name'}
                 link={'entry.urlTo'}
                 difficulty={'Hard'}
                 date={new Date().toString()}
                 code={'entry.code'}
                 description={'entry.description'}
-              />
-            {/* {data.map((entry: EntryType) => (
-              <TableRowComponent
-                key={entry.id}
-                name={entry.name}
-                link={entry.urlTo}
-                difficulty={entry.difficulty}
-                date={entry.createdAt}
-                code={entry.code}
-                description={entry.description}
-              />
-            ))} */}
-          </TableHeaderComponent>
-        </div>
-      </>
-      {/* Mobile data table */}
-      <>
-        <div className=" xl:hidden ">
-          {/* {data.map((entry: EntryType) => (
-            <MobileDataTableRow
-              key={entry.id}
-              name={entry.name}
-              link={entry.urlTo}
-              difficulty={entry.difficulty}
-              date={entry.createdAt}
-              code={entry.code}
-              description={entry.description}
-            />
-          ))} */}
-        </div>
-      </>
+              /> */}
+                {data.map((entry: EntryType) => (
+                  <TableRowComponent
+                    key={entry.id}
+                    name={entry.name}
+                    link={entry.urlTo}
+                    difficulty={entry.difficulty}
+                    date={entry.createdAt}
+                    code={entry.code}
+                    description={entry.description}
+                  />
+                ))}
+              </TableHeaderComponent>
+            </div>
+          </>
+          {/* Mobile data table */}
+          <>
+            <div className=" xl:hidden ">
+              {/* <MobileDataTableRow
+                name={'entry.name'}
+                link={'entry.urlTo'}
+                difficulty={'Hard'}
+                date={new Date().toString()}
+                code={'entry.code'}
+                description={'entry.description'}
+            /> */}
+              {data.map((entry: EntryType) => (
+                <MobileDataTableRow
+                  key={entry.id}
+                  name={entry.name}
+                  link={entry.urlTo}
+                  difficulty={entry.difficulty}
+                  date={entry.createdAt}
+                  code={entry.code}
+                  description={entry.description}
+                />
+              ))}
+            </div>
+          </>
+        </>
+      )}
     </>
   );
 };
