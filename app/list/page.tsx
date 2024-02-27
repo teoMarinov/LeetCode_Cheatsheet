@@ -1,11 +1,11 @@
 "use client";
 
+import MobileDataTableRow from "@/app/components/DataTable/MobileDataTableRow";
+import TableHeaderComponent from "@/app/components/DataTable/TableHeaderComponent";
+import TableRowComponent from "@/app/components/DataTable/TableRowComponent";
+import { EntryType } from "@/app/types";
 import axios from "axios";
-import { useState, useEffect } from "react";
-import { EntryType } from "../types";
-import TableHeaderComponent from "../components/DataTable/TableHeaderComponent";
-import TableRowComponent from "../components/DataTable/TableRowComponent";
-import MobileDataTableRow from "../components/DataTable/MobileDataTableRow";
+import { useEffect, useState } from "react";
 
 const ListEntries = () => {
   const [data, setData] = useState<EntryType[]>([]);
@@ -63,46 +63,47 @@ const ListEntries = () => {
   }, []);
 
   return (
-    <>
-        {/* Desktop data table */}
-      <>
-        <div className="mt-3 border-t hidden xl:block">
-          <TableHeaderComponent
-            orderBy={orderBy}
-            ascending={isAscending}
-            sortBy={sortBy}
-          >
-            {data.map((entry: EntryType) => (
-              <TableRowComponent
-                key={entry.id}
-                name={entry.name}
-                link={entry.urlTo}
-                difficulty={entry.difficulty}
-                date={entry.createdAt}
-                code={entry.code}
-                description={entry.description}
-              />
-            ))}
-          </TableHeaderComponent>
-        </div>
-      </>
-      {/* Mobile data table */}
-      <>
-        <div className=" xl:hidden ">
-          {data.map((entry: EntryType) => (
-            <MobileDataTableRow
-              key={entry.id}
-              name={entry.name}
-              link={entry.urlTo}
-              difficulty={entry.difficulty}
-              date={entry.createdAt}
-              code={entry.code}
-              description={entry.description}
-            />
-          ))}
-        </div>
-      </>
-    </>
+    // <>
+    //   {/* Desktop data table */}
+    //   <>
+    //     <div className="mt-3 border-t hidden xl:block">
+    //       <TableHeaderComponent
+    //         orderBy={orderBy}
+    //         ascending={isAscending}
+    //         sortBy={sortBy}
+    //       >
+    //         {data.map((entry: EntryType) => (
+    //           <TableRowComponent
+    //             key={entry.id}
+    //             name={entry.name}
+    //             link={entry.urlTo}
+    //             difficulty={entry.difficulty}
+    //             date={entry.createdAt}
+    //             code={entry.code}
+    //             description={entry.description}
+    //           />
+    //         ))}
+    //       </TableHeaderComponent>
+    //     </div>
+    //   </>
+    //   {/* Mobile data table */}
+    //   <>
+    //     <div className=" xl:hidden ">
+    //       {data.map((entry: EntryType) => (
+    //         <MobileDataTableRow
+    //           key={entry.id}
+    //           name={entry.name}
+    //           link={entry.urlTo}
+    //           difficulty={entry.difficulty}
+    //           date={entry.createdAt}
+    //           code={entry.code}
+    //           description={entry.description}
+    //         />
+    //       ))}
+    //     </div>
+    //   </>
+    // </>
+    <div>This is /list landing page</div>
   );
 };
 

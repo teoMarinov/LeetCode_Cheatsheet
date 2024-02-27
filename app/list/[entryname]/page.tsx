@@ -1,4 +1,5 @@
 "use client";
+
 import MobileDataTableRow from "@/app/components/DataTable/MobileDataTableRow";
 import TableHeaderComponent from "@/app/components/DataTable/TableHeaderComponent";
 import TableRowComponent from "@/app/components/DataTable/TableRowComponent";
