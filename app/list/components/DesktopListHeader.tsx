@@ -38,8 +38,6 @@ const DesktopListHeader = () => {
   return (
     <div
       className="
-              static
-              top-0
               p-3
               border-b
             border-gray-300

@@ -23,25 +23,21 @@ import { signOut } from "next-auth/react";
 import { useTheme } from "next-themes";
 import { useRouter } from "next/navigation";
 import { useState, KeyboardEvent } from "react";
+import UserSheet from "@/components/user-sheeet";
 
-interface MobileListHeaderProps {
-  userInfo?: any;
-}
-const MobileListHeader: React.FC<MobileListHeaderProps> = ({}) => {
-  
+const MobileListHeader = () => {
   const session = useSession().data?.user;
 
+  const [search, setSearch] = useState("");
   const router = useRouter();
 
-  const [search, setSearch] = useState("");
-
   const { resolvedTheme, setTheme } = useTheme();
+
+  const logOut = () => signOut({ callbackUrl: "/" });
 
   const toggleTheme = () => {
     setTheme(resolvedTheme === "dark" ? "light" : "dark");
   };
-
-  const logOut = () => signOut({ callbackUrl: "/" });
 
   const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
@@ -50,50 +46,32 @@ const MobileListHeader: React.FC<MobileListHeaderProps> = ({}) => {
   };
 
   return (
-    <div className=" flex gap-x-5 w-fill p-5 bg-neutral-500 xl:hidden">
+    <div
+      className="
+      flex 
+      gap-x-5 
+      w-fill 
+      p-5 
+      xl:hidden
+      border-b
+    border-gray-300
+    dark:border-gray-600
+      shadow-md
+    "
+    >
       <Input
         onChange={(e) => setSearch(e.target.value)}
         onKeyDown={handleKeyDown}
         placeholder="Search"
       />
-      <Sheet>
-        <SheetTrigger asChild>
-          <Button variant="outline">
-            <RxHamburgerMenu />
-          </Button>
-        </SheetTrigger>
-        <SheetContent>
-          <SheetHeader className="gap-y-6">
-            <SheetTitle className="text-center md:text-5xl text-3xl">
-              {session?.name}
-            </SheetTitle>
-            <SheetDescription className="break-words md:text-3xl text-xl text-center">
-              {session?.email}
-            </SheetDescription>
-          </SheetHeader>
-
-          <Button onClick={() => router.push("/new")} variant="outline">
-            Add new
-          </Button>
-
-          <div className="py-10 flex flex-col items-center gap-y-2 md:gap-y-4">
-            <p className="md:text-xl">Theme</p>
-            {resolvedTheme === "dark" ? (
-              <FiMoon size={48} onClick={toggleTheme} />
-            ) : (
-              <FiSun size={48} onClick={toggleTheme} />
-            )}
-          </div>
-
-          <SheetFooter>
-            <SheetClose asChild>
-              <Button className="w-full" onClick={logOut}>
-                Log out
-              </Button>
-            </SheetClose>
-          </SheetFooter>
-        </SheetContent>
-      </Sheet>
+      <UserSheet
+        name={session?.name!}
+        email={session?.email!}
+        resolvedTheme={resolvedTheme}
+        clickHandler={() => router.push("/new")}
+        logOut={logOut}
+        toggleTheme={toggleTheme}
+      />
     </div>
   );
 };
