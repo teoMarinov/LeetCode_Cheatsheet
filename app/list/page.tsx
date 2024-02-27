@@ -63,47 +63,54 @@ const ListEntries = () => {
   }, []);
 
   return (
-    // <>
-    //   {/* Desktop data table */}
-    //   <>
-    //     <div className="mt-3 border-t hidden xl:block">
-    //       <TableHeaderComponent
-    //         orderBy={orderBy}
-    //         ascending={isAscending}
-    //         sortBy={sortBy}
-    //       >
-    //         {data.map((entry: EntryType) => (
-    //           <TableRowComponent
-    //             key={entry.id}
-    //             name={entry.name}
-    //             link={entry.urlTo}
-    //             difficulty={entry.difficulty}
-    //             date={entry.createdAt}
-    //             code={entry.code}
-    //             description={entry.description}
-    //           />
-    //         ))}
-    //       </TableHeaderComponent>
-    //     </div>
-    //   </>
-    //   {/* Mobile data table */}
-    //   <>
-    //     <div className=" xl:hidden ">
-    //       {data.map((entry: EntryType) => (
-    //         <MobileDataTableRow
-    //           key={entry.id}
-    //           name={entry.name}
-    //           link={entry.urlTo}
-    //           difficulty={entry.difficulty}
-    //           date={entry.createdAt}
-    //           code={entry.code}
-    //           description={entry.description}
-    //         />
-    //       ))}
-    //     </div>
-    //   </>
-    // </>
-    <div>This is /list landing page</div>
+    <>
+      {/* Desktop data table */}
+      <>
+        <div className="mt-3 border-t hidden xl:block">
+          <TableHeaderComponent
+            orderBy={orderBy}
+            ascending={isAscending}
+            sortBy={sortBy}
+          >
+             <TableRowComponent
+                name={'entry.name'}
+                link={'entry.urlTo'}
+                difficulty={'Hard'}
+                date={'entry.createdAt'}
+                code={'entry.code'}
+                description={'entry.description'}
+              />
+            {/* {data.map((entry: EntryType) => (
+              <TableRowComponent
+                key={entry.id}
+                name={entry.name}
+                link={entry.urlTo}
+                difficulty={entry.difficulty}
+                date={entry.createdAt}
+                code={entry.code}
+                description={entry.description}
+              />
+            ))} */}
+          </TableHeaderComponent>
+        </div>
+      </>
+      {/* Mobile data table */}
+      <>
+        <div className=" xl:hidden ">
+          {/* {data.map((entry: EntryType) => (
+            <MobileDataTableRow
+              key={entry.id}
+              name={entry.name}
+              link={entry.urlTo}
+              difficulty={entry.difficulty}
+              date={entry.createdAt}
+              code={entry.code}
+              description={entry.description}
+            />
+          ))} */}
+        </div>
+      </>
+    </>
   );
 };
 
