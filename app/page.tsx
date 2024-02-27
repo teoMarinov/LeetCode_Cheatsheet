@@ -39,7 +39,7 @@ export default function Home() {
           to write down the solutions for all LeetCode problems you{"'"}ve
           solved!
         </h3>
-        <TableHeaderComponent>
+        {/* <TableHeaderComponent>
           {test.map((item) => (
             <TableRowComponent
               key={item}
@@ -51,8 +51,8 @@ export default function Home() {
               description={dummyData.description}
             />
           ))}
-        </TableHeaderComponent>
-        L
+        </TableHeaderComponent> */}
+        
       </div>
     </div>
   );
