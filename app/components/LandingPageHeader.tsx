@@ -3,12 +3,11 @@
 import Link from "next/link";
 
 const LandingPageHeader = () => {
-
   return (
     <div
       className="
-            static
-            top-0
+           absolute
+           top-0
             p-3
             border-b
           border-gray-300

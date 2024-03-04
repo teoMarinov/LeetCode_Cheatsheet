@@ -9,10 +9,10 @@ import LandingPageHeader from "./components/LandingPageHeader";
 export default function Home() {
   const test = ["Easy", "Medium", "Hard"];
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center h-full justify-center ">
       <LandingPageHeader />
-      <div className="pt-60 flex flex-col gap-y-10 w-[98%]">
-        <h1 className="text-7xl text-center font-bold">
+      <div className=" flex flex-col gap-y-10 w-[98%] ">
+        <h1 className="text-7xl text-center font-bold ">
           LeetCode_
           <span
             className="
@@ -52,7 +52,6 @@ export default function Home() {
             />
           ))}
         </TableHeaderComponent> */}
-        
       </div>
     </div>
   );
