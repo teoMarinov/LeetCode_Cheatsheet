@@ -39,19 +39,6 @@ export default function Home() {
           to write down the solutions for all LeetCode problems you{"'"}ve
           solved!
         </h3>
-        {/* <TableHeaderComponent>
-          {test.map((item) => (
-            <TableRowComponent
-              key={item}
-              name={dummyData.name}
-              link={dummyData.link}
-              difficulty={item}
-              date={dummyData.date}
-              code={dummyData.code}
-              description={dummyData.description}
-            />
-          ))}
-        </TableHeaderComponent> */}
       </div>
     </div>
   );

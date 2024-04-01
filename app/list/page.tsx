@@ -6,6 +6,7 @@ import TableRowComponent from "@/app/components/DataTable/TableRowComponent";
 import { EntryType } from "@/app/types";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import LoadingPage from "../components/loading-page";
 
 const ListEntries = () => {
   const [data, setData] = useState<EntryType[]>([]);
@@ -72,7 +73,7 @@ const ListEntries = () => {
   return (
     <>
       {isLoading ? (
-        <>Loading</>
+        <LoadingPage />
       ) : (
         <>
           {/* Desktop data table */}
